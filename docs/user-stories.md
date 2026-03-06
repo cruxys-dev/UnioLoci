@@ -198,7 +198,7 @@ Suggested prioritization: High for core functionalities (authentication, calenda
 **Acceptance Criteria:**
 
 - Description generated based on title or input text.
-- Integration with OpenAI API using TOON for structured output.
+- Integration with Google Gemini API using JSON for structured output.
 - **Deduct 1 credit** from the user's `aiRequestsBalance` upon successful generation.
 
 ---

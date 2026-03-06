@@ -15,7 +15,9 @@ UnioLoci incorporates AI features to enhance the user experience:
 - (Future) Smart classification, conversational assistants, summaries.
 
 AI is not the core of the project, but it is a **key differentiator**.  
-Additionally, there is a goal to **practice advanced AI integration**, especially using modern structured formats like **TOON (Token-Oriented Object Notation)** to obtain clean, reliable, and processable data.
+Additionally, there is a goal to **practice advanced AI integration**, especially using modern structured formats like **JSON (JavaScript Object Notation)** to obtain clean, reliable, and processable data.
+
+Given that this is a portfolio project, there is a strong emphasis on **minimizing costs**, particularly for AI services, to keep the project sustainable and accessible.
 
 Technologies considered:
 
@@ -34,10 +36,8 @@ Technologies considered:
 
 **Pros:**
 
-- Excellent semantic understanding.
-- Very high accuracy in generating responses in **TOON** format.
+- Very high accuracy in generating responses in **JSON** format.
 - Mature SDKs and easy integration with NestJS.
-- Active community and extensive tooling.
 - Excellent capabilities for interpreting natural language related to calendars.
 
 **Cons:**
@@ -54,12 +54,15 @@ Technologies considered:
 
 - Strong models in multimodal reasoning.
 - Good ecosystem if using Google infrastructure.
+- High accuracy in generating responses in **JSON** format.
+- Offers free models, significantly reducing costs for portfolio projects.
+- Good performance for natural language interpretation and event creation.
+- Simple integration with modern web stacks.
 
 **Cons:**
 
-- Lower stability when producing structured formats like TOON.
 - Less polished Node SDK.
-- Less accurate interpretation for calendar data.
+- Potential lower stability in complex structured outputs.
 
 ---
 
@@ -72,7 +75,7 @@ Technologies considered:
 
 **Cons:**
 
-- TOON is less stable than with OpenAI.
+- JSON is less stable than with OpenAI.
 - More limited ecosystem.
 - Worse performance in extracting event data.
 
@@ -89,31 +92,25 @@ Technologies considered:
 **Cons:**
 
 - Complex infrastructure to maintain.
-- Worse accuracy with TOON without fine-tuning.
+- Worse accuracy with JSON without fine-tuning.
 - Fails much more often than OpenAI with ambiguous sentences.
 
 ---
 
 ## Decision
 
-**We choose the OpenAI API as the primary AI technology.**
+**We choose Google Gemini as the primary AI technology.**
 
-- **Model:** GPT-4.x or equivalent.
-- **Output Format:** **TOON (Token-Oriented Object Notation)** for structured data.
+- **Model:** Gemini 2.5 Flash or better.
+- **Output Format:** **JSON (JavaScript Object Notation)** for structured data.
 
 ---
 
 ## Reason
 
-OpenAI offers:
+Google Gemini is chosen due to its cost-effectiveness, offering free models that are suitable for a portfolio project where minimizing expenses is crucial. While it may have some limitations in stability for structured JSON output compared to other providers, it provides sufficient capabilities for the AI features in UnioLoci, such as natural language processing for event creation.
 
-- The highest accuracy in interpreting natural language.
-- Excellent performance in generating reliable data in **TOON**, which reduces errors in event creation.
-- Smooth integration with the stack (NestJS + Flutter + React).
-- A mature, stable, and well-documented ecosystem.
-- The best balance between capability, simplicity, and productivity.
-
-Furthermore, it allows practicing exactly the type of modern AI we want to integrate: semantic extraction and conversion to robust structured formats.
+Furthermore, it allows practicing AI integration with a focus on budget constraints, which is important for real-world applications.
 
 ---
 
@@ -121,17 +118,15 @@ Furthermore, it allows practicing exactly the type of modern AI we want to integ
 
 ### Pros (+)
 
-- Highly accurate extraction in TOON.
-- Saves time when validating calendar data.
-- Easy integration and maintenance.
-- Solid foundation for future smart features.
-- Consistent and predictable responses.
+- Low to no cost due to free models.
+- Good multimodal reasoning capabilities.
+- Suitable for a portfolio project with limited budget.
+- Integration with Google ecosystem if needed.
 
 ### Cons (-)
 
-- Dependency on an external provider.
-- Variable cost.
-- Need to manage keys and usage policies.
-- Less overall control than a 100% self-hosted solution.
+- Potential lower stability in producing structured JSON formats.
+- May require more error handling for calendar data interpretation.
+- Less mature Node SDK compared to some alternatives.
 
 ---

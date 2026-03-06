@@ -59,7 +59,6 @@ C4Container
 
   System_Boundary(c1, "UnioLoci System") {
     Container(frontend, "Web Application", "React", "The single-page application (SPA) providing the user interface in the browser.")
-    Container(mobile, "Mobile App", "Flutter", "The native mobile application for iOS and Android.")
     Container(backend, "API / Backend", "NestJS", "Handles all business logic, authentication, and real-time updates.")
     ContainerDb(database, "Database", "PostgreSQL", "Stores all user, calendar, and event data.")
   }
@@ -68,10 +67,8 @@ C4Container
   System_Ext(openai_api, "OpenAI API", "Processes natural language.")
 
   Rel(user, frontend, "Uses", "HTTPS")
-  Rel(user, mobile, "Uses")
 
   Rel(frontend, backend, "Makes API calls", "HTTPS/WSS")
-  Rel(mobile, backend, "Makes API calls", "HTTPS/WSS")
 
   Rel(backend, database, "Reads/Writes", "TCP")
   Rel(backend, email_service, "Sends emails", "API")

@@ -49,14 +49,13 @@ The API is versioned via the URL prefix. The current version is `v1`.
 ### Authentication (`/auth`)
 
 - **`POST /auth/magic-link`**
-
   - **Description:** Initiates the login process by sending a magic link to the user's email.
   - **Body:** `{ "email": "user@example.com" }`
   - **Response (200 OK):** `{ "message": "Login link sent to your email." }`
 
 - **`GET /auth/callback?token={magic_token}`**
   - **Description:** Validates the magic token from the email link and returns a session JWT.
-  - **Response (200 OK):** `{ "accessToken": "your_session_jwt", "isNewUser": true }`
+  - **Response (200 OK):** `{ "success": true, "entries": "your_session_jwt" }`
 
 ### Users (`/users`)
 
@@ -76,40 +75,33 @@ The API is versioned via the URL prefix. The current version is `v1`.
 ### Calendars (`/calendars`)
 
 - **`POST /calendars`**
-
   - **Description:** Creates a new calendar. The creator is automatically added as a member.
   - **Body:** `{ "name": "Team Sync" }`
   - **Response (201 Created):** The full calendar object.
 
 - **`GET /calendars`**
-
   - **Description:** Retrieves a list of all calendars the authenticated user is a member of.
   - **Response (200 OK):** `[ { calendar_object_1 }, { calendar_object_2 } ]`
 
 - **`GET /calendars/{calendarId}`**
-
   - **Description:** Retrieves a single calendar's details.
   - **Response (200 OK):** The full calendar object, including its members.
 
 - **`PATCH /calendars/{calendarId}`**
-
   - **Description:** Updates a calendar's properties (e.g., its name).
   - **Body:** `{ "name": "New Team Name" }`
   - **Response (200 OK):** The updated calendar object.
 
 - **`DELETE /calendars/{calendarId}`**
-
   - **Description:** Soft-deletes a calendar. Only the creator can do this.
   - **Response (204 No Content):**
 
 - **`POST /calendars/join`**
-
   - **Description:** Allows a user to join a calendar using its share token.
   - **Body:** `{ "shareToken": "unique-share-token" }`
   - **Response (200 OK):** The calendar object the user has joined.
 
 - **`POST /calendars/{calendarId}/transfer`**
-
   - **Description:** Transfers ownership of the calendar to another member. Only the current creator can perform this.
   - **Body:** `{ "newOwnerId": "uuid-of-new-owner" }`
   - **Response (200 OK):** The updated calendar object with the new owner.
@@ -128,25 +120,21 @@ The API is versioned via the URL prefix. The current version is `v1`.
 Events are always nested under a calendar.
 
 - **`POST /calendars/{calendarId}/events`**
-
   - **Description:** Creates a new event in a specific calendar.
   - **Body:** `{ "title": "...", "startTime": "...", "endTime": "..." }`
   - **Response (201 Created):** The new event object.
 
 - **`POST /calendars/{calendarId}/events/ai`**
-
   - **Description:** Creates an event from a natural language string.
   - **Body:** `{ "text": "Sprint planning next Thursday at 2 pm" }`
   - **Response (201 Created):** The new event object, including the AI-generated description.
   - **Response (429 Too Many Requests):** `{ "message": "AI request limit exceeded." }`
 
 - **`GET /calendars/{calendarId}/events?from={iso_date}&to={iso_date}`**
-
   - **Description:** Retrieves all events for a given calendar within a specific date range.
   - **Response (200 OK):** `[ { event_object_1 }, { event_object_2 } ]`
 
 - **`PATCH /events/{eventId}`**
-
   - **Description:** Updates an event's details.
   - **Body:** `{ "title": "Updated Title", "startTime": "..." }`
   - **Response (200 OK):** The updated event object.

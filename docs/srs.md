@@ -16,7 +16,7 @@ It serves as the official reference for development, testing, and architectural 
 
 ## 1.2 Intended Audience
 
-- Developers (Frontend, Backend, Mobile)
+- Developers (Frontend, Backend)
 - QA Engineers
 - Designers
 - Project stakeholders
@@ -34,13 +34,12 @@ The system includes AI-assisted event creation and description generation.
 
 ## 2.1 Product Perspective
 
-UnioLoci is a standalone web/mobile application.  
+UnioLoci is a standalone web application.  
 It does not integrate with external calendars (Google/Outlook) in the MVP.  
 It consists of:
 
 - **Backend**: API + WebSockets (NestJS)
 - **Frontend**: React web application (Desktop)
-- **Mobile App**: Flutter
 - **Database**: PostgreSQL
 - **AI Integration**: OpenAI API (text → event + auto-description)
 
@@ -267,7 +266,7 @@ Output:
 
 ### NFR-7 Responsive Design
 
-- Application must work seamlessly on desktop and mobile.
+- Application must work seamlessly on desktop.
 
 ### NFR-8 Simple Interface
 
@@ -295,16 +294,11 @@ Output:
 - Monthly calendar grid
 - Real-time event rendering
 
-## 5.3 Mobile (Flutter)
-
-- Simplified mobile client
-- Same real-time sync
-
 ## 5.4 AI Integration
 
 - OpenAI API
 - Prompt templates for:
-  - Natural language → event (using TOON for structured output)
+  - Natural language → event (using JSON for structured output)
   - Description generation
 
 ---

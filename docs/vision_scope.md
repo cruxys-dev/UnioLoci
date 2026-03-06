@@ -11,7 +11,7 @@ The name blends two Latin roots: **Unio** (“union”) and **Loci** (“places�
 # 2. Purpose
 
 1. **Provide a unified cooperative calendar**, where groups work from a single real-time schedule instead of fragmented, individually owned calendars.
-2. **Serve as a didactic portfolio project** to practice architecture, real-time collaboration, and artificial intelligence using **NestJS**, **React**, and **Flutter**.
+2. **Serve as a didactic portfolio project** to practice architecture, real-time collaboration, and artificial intelligence using **NestJS** and **React**.
 
 # 3. Product Vision
 
@@ -55,7 +55,7 @@ The MVP focuses on delivering a minimal but solid, fast, and collaborative share
 | Real-Time Updates                   | WebSocket-based live sync for all event changes.                                                                                      | Delivers the collaborative "document" feel.               |
 | User Presence Indicators            | Shows which users are viewing or editing events in real-time, including visual indicators (e.g., small avatars) for concurrent edits. | Enhances collaborative awareness and mitigates conflicts. |
 | Calendar View (Month)               | A single, clean monthly view.                                                                                                         | Keeps MVP simple while meeting expectations.              |
-| Mobile & Desktop UI                 | A responsive interface.                                                                                                               | Practical usability.                                      |
+| Desktop UI                          | A responsive interface.                                                                                                               | Practical usability.                                      |
 | **AI: Natural Language → Event**    | Users can type text such as “Planning meeting next Friday at 3pm,” and the system generates the event.                                | Provides meaningful AI practice.                          |
 | **AI: Auto-Generated Descriptions** | AI creates event descriptions based on the title or input text.                                                                       | Enhances UX and demonstrates AI integration.              |
 | Reminders (Email)                   | Simple email notifications before an event.                                                                                           | Basic follow-up functionality.                            |
@@ -89,6 +89,6 @@ The MVP is successful if:
 - **Frontend:** React (with Zustand or TanStack Query)
 - **Real-Time:** WebSockets with minimal sync strategy
 - **Database:** PostgreSQL
-- **AI Integration:** OpenAI API for text-to-event and description generation (using TOON for structured output)
+- **AI Integration:** Google Gemini API for text-to-event and description generation (using JSON for structured output)
 
 ---
