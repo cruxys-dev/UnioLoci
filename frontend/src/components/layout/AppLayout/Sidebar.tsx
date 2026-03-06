@@ -84,7 +84,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           >
             <Link
               to="/app/dashboard"
-              className="text-xl font-bold tracking-tight bg-linear-to-r from-indigo-600 to-cyan-600 dark:from-indigo-400 dark:to-cyan-400 bg-clip-text text-transparent truncate"
+              className="text-xl font-bold tracking-tight bg-gradient-to-r from-indigo-600 to-cyan-600 dark:from-indigo-400 dark:to-cyan-400 bg-clip-text text-transparent truncate"
             >
               {isCollapsed ? "U" : "UnioLoci"}
             </Link>
