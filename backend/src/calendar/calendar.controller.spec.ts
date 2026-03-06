@@ -8,7 +8,21 @@ describe('CalendarController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       controllers: [CalendarController],
-      providers: [CalendarService],
+      providers: [
+        {
+          provide: CalendarService,
+          useValue: {
+            create: jest.fn(),
+            findAll: jest.fn(),
+            findOne: jest.fn(),
+            update: jest.fn(),
+            remove: jest.fn(),
+            join: jest.fn(),
+            leave: jest.fn(),
+            transferOwnership: jest.fn(),
+          },
+        },
+      ],
     }).compile();
 
     controller = module.get<CalendarController>(CalendarController);
