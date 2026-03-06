@@ -1,0 +1,39 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "yarn: dev",
+      "type": "shell",
+      "command": "yarn dev",
+      "isBackground": true,
+      "problemMatcher": [
+        {
+          "base": "$tsc-watch",
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": {
+              "regexp": "vite"
+            },
+            "endsPattern": {
+              "regexp": "ready"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "label": "Terminate All Tasks",
+      "command": "echo ${input:terminate}",
+      "type": "shell",
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "terminate",
+      "type": "command",
+      "command": "workbench.action.tasks.terminate",
+      "args": "yarn: dev"
+    }
+  ]
+}
