@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router";
 import { useCalendarStore } from "../../../store/calendar.store";
+import { useUIStore } from "../../../store/ui.store";
 
 export default function CalendarDetail() {
   const { id } = useParams<{ id: string }>();
@@ -20,35 +21,45 @@ export default function CalendarDetail() {
     }
   }, [id, fetchCalendar]);
 
-  const handleDelete = async () => {
-    if (
-      !id ||
-      !confirm(
+  const { showModal } = useUIStore();
+
+  const handleDelete = () => {
+    if (!id) return;
+
+    showModal({
+      title: "Eliminar Calendario",
+      message:
         "¿Seguro que deseas eliminar este calendario? Esta acción no se puede deshacer.",
-      )
-    )
-      return;
+      type: "warning",
+      onConfirm: async () => {
+        setIsDeleting(true);
+        const success = await deleteCalendar(id);
+        setIsDeleting(false);
 
-    setIsDeleting(true);
-    const success = await deleteCalendar(id);
-    setIsDeleting(false);
-
-    if (success) {
-      navigate("/app/calendars");
-    }
+        if (success) {
+          navigate("/app/calendars");
+        }
+      },
+    });
   };
 
-  const handleLeave = async () => {
-    if (!id || !confirm("¿Seguro que deseas abandonar este calendario?"))
-      return;
+  const handleLeave = () => {
+    if (!id) return;
 
-    setIsDeleting(true);
-    const success = await leaveCalendar(id);
-    setIsDeleting(false);
+    showModal({
+      title: "Abandonar Calendario",
+      message: "¿Seguro que deseas abandonar este calendario?",
+      type: "warning",
+      onConfirm: async () => {
+        setIsDeleting(true);
+        const success = await leaveCalendar(id);
+        setIsDeleting(false);
 
-    if (success) {
-      navigate("/app/calendars");
-    }
+        if (success) {
+          navigate("/app/calendars");
+        }
+      },
+    });
   };
 
   if (isLoading && !currentCalendar) {

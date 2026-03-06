@@ -6,6 +6,8 @@ export const GlobalModal: React.FC = () => {
 
   if (!modal) return null;
 
+  const isConfirm = !!modal.onConfirm;
+
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/40 backdrop-blur-sm animate-in fade-in duration-300">
       <div
@@ -20,14 +22,26 @@ export const GlobalModal: React.FC = () => {
         </div>
 
         <div className="p-4 bg-zinc-800/50 flex justify-end gap-3">
+          {isConfirm && (
+            <button
+              onClick={hideModal}
+              className="px-6 py-2 bg-zinc-700 hover:bg-zinc-600 text-white font-medium rounded-xl transition-all active:scale-95 cursor-pointer"
+            >
+              Cancelar
+            </button>
+          )}
           <button
             onClick={() => {
               hideModal();
               modal.onConfirm?.();
             }}
-            className="px-6 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-medium rounded-xl transition-all active:scale-95 cursor-pointer"
+            className={`px-6 py-2 ${
+              modal.type === "warning" || modal.type === "error"
+                ? "bg-red-600 hover:bg-red-500"
+                : "bg-indigo-600 hover:bg-indigo-500"
+            } text-white font-medium rounded-xl transition-all active:scale-95 cursor-pointer`}
           >
-            Entendido
+            {isConfirm ? "Confirmar" : "Entendido"}
           </button>
         </div>
       </div>

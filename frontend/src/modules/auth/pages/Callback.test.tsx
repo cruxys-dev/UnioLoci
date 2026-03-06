@@ -95,7 +95,7 @@ describe("AuthCallback Component", () => {
 
     const { setToken } = useAuthStore.getState();
     vi.mocked(setToken).mockImplementation(async (token: string | null) => {
-      useAuthStore.setState({ token, user: mockUser });
+      useAuthStore.setState({ token: token ?? "", user: mockUser });
     });
 
     render(<AuthCallback />);

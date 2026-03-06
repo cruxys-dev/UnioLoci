@@ -49,7 +49,9 @@ export class CalendarService {
       relations: ['calendar', 'calendar.creator'],
     });
 
-    return memberships.map((membership) => membership.calendar);
+    return memberships
+      .filter((membership) => membership.calendar != null)
+      .map((membership) => membership.calendar);
   }
 
   async findOne(id: string, userId: string): Promise<Calendar> {
