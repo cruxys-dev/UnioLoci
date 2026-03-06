@@ -1,0 +1,70 @@
+<mj-text align="center" padding="0">
+  <div
+    style="
+      display: inline-block;
+      background-color: rgba(99, 102, 241, 0.1);
+      color: #818cf8;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 600;
+      border: 1px solid rgba(99, 102, 241, 0.2);
+      line-height: 1;
+    "
+  >
+    <span
+      style="
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        background: #818cf8;
+        border-radius: 50%;
+        vertical-align: middle;
+        margin-right: 6px;
+      "
+    ></span>
+    <span style="vertical-align: middle"> Secure Access Link </span>
+  </div>
+</mj-text>
+
+<mj-text
+  font-size="28px"
+  font-weight="800"
+  color="#ffffff"
+  align="left"
+  padding-top="24px"
+  padding-bottom="16px"
+>
+  Hi{{#if name}} {{ name }}{{/if}}!
+</mj-text>
+
+<mj-text font-size="18px" color="#a3a3a3" padding-bottom="24px">
+  To enter your collaborative workspace at
+  <strong style="color: #ffffff">Unioloci</strong>, use the magic button below.
+</mj-text>
+
+<mj-button href="{{url}}" width="100%"> Enter Unioloci </mj-button>
+
+<mj-text font-size="14px" color="#737373" padding-top="24px" align="center">
+  This link will expire in
+  <strong style="color: #e5e5e5">15 minutes</strong>.
+  <br />
+  If you didn't request this access, you can safely ignore this email.
+</mj-text>
+
+<mj-divider border-width="1px" border-color="#262626" padding="32px 0" />
+
+<mj-text font-size="13px" color="#525252" line-height="20px">
+  If the button doesn't work, copy and paste this link into your browser:
+  <br />
+  <a
+    href="{{url}}"
+    style="
+      color: #818cf8;
+      word-break: break-all;
+      text-decoration: none;
+      font-weight: 500;
+    "
+    >{{ url }}</a
+  >
+</mj-text>
