@@ -1,6 +1,7 @@
 import "@testing-library/jest-dom/vitest";
 import { cleanup } from "@testing-library/react";
 import { afterEach, vi } from "vitest";
+import { Buffer } from "buffer";
 
 // Libera los recursos después de cada prueba
 afterEach(() => {
@@ -39,7 +40,6 @@ Object.defineProperty(window, "location", {
   writable: true,
 });
 
-declare const Buffer: any;
 // Polyfills para atob y btoa si no están definidos (para JSDOM o Node environment)
 if (typeof window.atob === "undefined") {
   (window as any).atob = (str: string) =>
