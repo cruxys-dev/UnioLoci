@@ -184,7 +184,7 @@ export default function CalendarDetail() {
         </h3>
         <p className="text-neutral-500 max-w-md mx-auto">
           Próximamente aquí verás el calendario mensual con todos tus eventos y
-          podrás la vista compartida en tiempo real con otros miembros.
+          podrás ver la vista compartida en tiempo real con otros miembros.
         </p>
       </div>
     </div>
