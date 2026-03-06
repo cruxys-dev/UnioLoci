@@ -84,7 +84,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
           >
             <Link
               to="/app/dashboard"
-              className="text-xl font-bold tracking-tight bg-linear-to-r from-indigo-600 to-cyan-600 dark:from-indigo-400 dark:to-cyan-400 bg-clip-text text-transparent truncate"
+              className="text-xl font-bold tracking-tight bg-gradient-to-r from-indigo-600 to-cyan-600 dark:from-indigo-400 dark:to-cyan-400 bg-clip-text text-transparent truncate"
             >
               {isCollapsed ? "U" : "UnioLoci"}
             </Link>
@@ -127,7 +127,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 isCollapsed ? "justify-center px-0" : "px-2 py-2"
               }`}
             >
-              <div className="w-8 h-8 rounded-full bg-linear-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-white text-xs font-bold shrink-0">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-white text-xs font-bold shrink-0">
                 {user?.name?.[0]?.toUpperCase() || "U"}
               </div>
               {!isCollapsed && (
