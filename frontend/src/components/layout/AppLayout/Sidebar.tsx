@@ -127,7 +127,7 @@ export const Sidebar: React.FC<SidebarProps> = ({
                 isCollapsed ? "justify-center px-0" : "px-2 py-2"
               }`}
             >
-              <div className="w-8 h-8 rounded-full bg-linear-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-white text-xs font-bold shrink-0">
+              <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-white text-xs font-bold shrink-0">
                 {user?.name?.[0]?.toUpperCase() || "U"}
               </div>
               {!isCollapsed && (
