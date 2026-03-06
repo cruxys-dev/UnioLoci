@@ -2,6 +2,9 @@ import { createBrowserRouter } from "react-router";
 // import App from "./App";
 import Home from "./modules/home/pages/Home";
 import Dashboard from "./modules/dashboard/pages/Dashboard";
+import CalendarsList from "./modules/calendar/pages/CalendarsList";
+import CalendarDetail from "./modules/calendar/pages/CalendarDetail";
+import CalendarJoin from "./modules/calendar/pages/CalendarJoin";
 import Login from "./modules/auth/pages/Login";
 import Callback from "./modules/auth/pages/Callback";
 import CompleteProfile from "./modules/auth/pages/CompleteProfile";
@@ -47,7 +50,12 @@ export const routes = [
         children: [
           {
             element: <VerifiedGuard />,
-            children: [{ path: "dashboard", element: <Dashboard /> }],
+            children: [
+              { path: "dashboard", element: <Dashboard /> },
+              { path: "calendars", element: <CalendarsList /> },
+              { path: "calendars/:id", element: <CalendarDetail /> },
+              { path: "calendars/:id/join", element: <CalendarJoin /> },
+            ],
           },
           {
             element: <OnboardingGuard />,

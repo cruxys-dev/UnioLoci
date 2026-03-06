@@ -39,6 +39,7 @@ Object.defineProperty(window, "location", {
   writable: true,
 });
 
+declare const Buffer: any;
 // Polyfills para atob y btoa si no están definidos (para JSDOM o Node environment)
 if (typeof window.atob === "undefined") {
   (window as any).atob = (str: string) =>
