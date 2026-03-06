@@ -1,0 +1,66 @@
+name: CI Pipeline
+
+on:
+  pull_request:
+    branches: [main, master, develop]
+
+jobs:
+  backend:
+    name: Backend Validation
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./backend
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "yarn"
+          cache-dependency-path: "./backend/yarn.lock"
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: TypeScript Validation
+        run: yarn build
+
+      - name: Run Tests
+        run: yarn test
+
+      - name: Build Docker Image
+        run: docker build -t unioloci-backend:latest .
+
+  frontend:
+    name: Frontend Validation
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ./frontend
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "yarn"
+          cache-dependency-path: "./frontend/yarn.lock"
+
+      - name: Install Dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: TypeScript Validation
+        run: yarn build
+
+      - name: Run Tests
+        run: yarn test
+
+      - name: Build Docker Image
+        run: docker build -t unioloci-frontend:latest .
